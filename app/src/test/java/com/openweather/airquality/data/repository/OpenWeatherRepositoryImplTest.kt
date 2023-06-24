@@ -2,6 +2,7 @@ package com.openweather.airquality.data.repository
 
 import com.openweather.airquality.data.mapper.AirPollutionMapper
 import com.openweather.airquality.data.remote.ApiService
+import com.openweather.airquality.domain.common.NetworkState
 import com.openweather.airquality.domain.model.BaseEntity
 import com.openweather.airquality.domain.model.ForcastEntity
 import com.openweather.airquality.domain.model.HeaderEntity
@@ -11,6 +12,7 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -87,8 +89,9 @@ class OpenWeatherRepositoryImplTest {
             )
         } returns mockedMappedList
 
-        runBlocking {
+        runTest {
             val response = openWeatherRepository.currentAirPollution()
+            println(response)
             assertEquals(expectedOutput, response.first().data)
         }
     }
@@ -115,7 +118,7 @@ class OpenWeatherRepositoryImplTest {
             // When
             val response = openWeatherRepository.forecastAirPollution()
             // Then
-            assertEquals(expectedForecastList, response.first().data)
+            assertEquals(NetworkState.Success(expectedForecastList), response)
         }
     }
 

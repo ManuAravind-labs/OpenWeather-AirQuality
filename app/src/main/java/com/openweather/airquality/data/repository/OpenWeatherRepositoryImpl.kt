@@ -31,10 +31,10 @@ class OpenWeatherRepositoryImpl @Inject constructor(
                 body?.list?.let {
                     val data = mapper.toDomainList(it)
                     val ourData = groupForecastByDate(data)
-                    NetworkState.Success(ourData)
+                    emit(NetworkState.Success(ourData))
                 }
             } else {
-                NetworkState.Error(response.message())
+                emit(NetworkState.Error(response.message()))
             }
         }
     }
@@ -43,15 +43,15 @@ class OpenWeatherRepositoryImpl @Inject constructor(
      * Grouping forecast list by date
      */
     private fun groupForecastByDate(data: List<ForcastEntity>?): List<BaseEntity> {
-        val consolidatedList = ArrayList<BaseEntity>()
+        val list = ArrayList<BaseEntity>()
         val grouping = data?.groupBy({ it.dt?.toLong()?.convertDate() }) { it }
         grouping?.forEach { it ->
-            consolidatedList.add(HeaderEntity(it.key))
+            list.add(HeaderEntity(it.key))
             it.value.forEach {
-                consolidatedList.add(it)
+                list.add(it)
             }
         }
-        return consolidatedList
+        return list
     }
 
     override suspend fun currentAirPollution(): Flow<NetworkState<List<ForcastEntity>>> {
@@ -64,10 +64,10 @@ class OpenWeatherRepositoryImpl @Inject constructor(
             if (response.isSuccessful) {
                 val body = response.body()
                 body?.list?.let {
-                    NetworkState.Success(mapper.toDomainList(it))
+                    emit(NetworkState.Success(mapper.toDomainList(it)))
                 }
             } else {
-                NetworkState.Error(response.message())
+                emit(NetworkState.Error(response.message()))
             }
         }
     }

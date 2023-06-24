@@ -26,12 +26,12 @@ android {
         debug {
             buildConfigField "Boolean", "DEBUG_MODE", "true"
             buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
-            buildConfigField "String", "API_KEY", "\"e83338f117f2ce76dd39ac8c2490\""
+            buildConfigField "String", "API_KEY", "\"e83338f117c01fb2ce76dd39ac8c2490\""
         }
         release {
             buildConfigField "Boolean", "DEBUG_MODE", "false"
             buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
-            buildConfigField "String", "API_KEY",  "\"e83338f117fce76dd39ac8c2490\""
+            buildConfigField "String", "API_KEY",  "\"e83338f117c01fb2ce76dd39ac8c2490\""
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
