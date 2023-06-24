@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    namespace 'com.openweather.airquality'
+    compileSdk rootProject.ext.compile_sdk_version
+
+    defaultConfig {
+        applicationId "com.openweather.airquality"
+        minSdk rootProject.ext.min_sdk_version
+        targetSdk rootProject.ext.target_sdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
+            buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
+            buildConfigField "String", "API_KEY", "\"e83338f117f2ce76dd39ac8c2490\""
+        }
+        release {
+            buildConfigField "Boolean", "DEBUG_MODE", "false"
+            buildConfigField "String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5/\""
+            buildConfigField "String", "API_KEY",  "\"e83338f117fce76dd39ac8c2490\""
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+
+    }
+}
+
+dependencies {
+
+    implementation androidx.core
+    implementation androidx.appcompat
+    implementation google.material
+    implementation google.gson
+    implementation androidx.constraintslayout
+    implementation google.hilt.android
+    kapt google.hilt.compiler
+
+    implementation androidx.navigation.fragment
+    implementation androidx.navigation.ui
+
+    implementation androidx.lifecycle.viewmodel
+    implementation androidx.lifecycle.runtime
+
+    implementation square.retrofitcore
+    implementation square.retrofitconverter
+
+    // coroutines
+    implementation kotlinVersion.coroutinesAndroid
+    implementation kotlinVersion.coroutinesCore
+
+    testImplementation kotlinVersion.test
+    testImplementation androidx.test
+    testImplementation mockk
+}

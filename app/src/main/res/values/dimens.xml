@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+
+    <dimen name="top_margin_12dp">12dp</dimen>
+    <dimen name="text_head_size_16sp">16sp</dimen>
+    <dimen name="text_subhead_size_14sp">14sp</dimen>
+    <dimen name="text_title_large_size">20sp</dimen>
+
+    <dimen name="text_size_status_25sp">25sp</dimen>
+
+    <dimen name="cardview_radius_30dp">30dp</dimen>
+    <dimen name="cardview_elevation_3dp">3dp</dimen>
+    <dimen name="cardview_padding_20dp">20dp</dimen>
+
+</resources>

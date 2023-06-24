@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">OpenWeather-AirQuality</string>
+    <string name="air_quality">Air Quality</string>
+    <string name="location_name">Munich</string>
+
+    <string name="co">CO (Carbon monoxide)</string>
+    <string name="no">NO (Nitrogen monoxide)</string>
+    <string name="no2">NO2 (Nitrogen dioxide)</string>
+    <string name="o3">O3 (Ozone)</string>
+    <string name="so2">SO2 (Sulphur dioxide)</string>
+    <string name="pm25">PM2.5 (Fine particles matter)</string>
+    <string name="pm10">PM10 (Coarse particulate matter)</string>
+    <string name="nh3">NH3 (Ammonia)</string>
+
+    <string name="something_wrong">Something went wrong!. Service not available</string>
+    <string name="no_internet">No Internet Connection</string>
+</resources>
