@@ -1,29 +1,30 @@
 package com.openweather.airquality.util
 
 import android.graphics.Color
+import com.openweather.airquality.util.AirQualityIndex.*
 
 object CommonUtils {
 
     fun getAirQualityText(index: Int?): String {
         return when (index) {
-            AirQualityIndex.Good.value -> {
-                AirQualityIndex.Good.name
+            Good.value -> {
+                Good.name
             }
 
-            AirQualityIndex.Fair.value -> {
-                AirQualityIndex.Fair.name
+            Fair.value -> {
+                Fair.name
             }
 
-            AirQualityIndex.Moderate.value -> {
-                AirQualityIndex.Moderate.name
+            Moderate.value -> {
+                Moderate.name
             }
 
-            AirQualityIndex.Poor.value -> {
-                AirQualityIndex.Poor.name
+            Poor.value -> {
+                Poor.name
             }
 
-            AirQualityIndex.VeryPoor.value -> {
-                AirQualityIndex.VeryPoor.name
+            VeryPoor.value -> {
+                VeryPoor.name
             }
 
             else -> {
@@ -34,23 +35,23 @@ object CommonUtils {
 
     fun getAirQualityColor(index: Int?): Int {
         return when (index) {
-            AirQualityIndex.Good.value -> {
+            Good.value -> {
                 Color.parseColor("#008450")
             }
 
-            AirQualityIndex.Fair.value -> {
+            Fair.value -> {
                 Color.parseColor("#008450")
             }
 
-            AirQualityIndex.Moderate.value -> {
+            Moderate.value -> {
                 Color.parseColor("#efb700")
             }
 
-            AirQualityIndex.Poor.value -> {
+            Poor.value -> {
                 Color.parseColor("#B81d13")
             }
 
-            AirQualityIndex.VeryPoor.value -> {
+            VeryPoor.value -> {
                 Color.parseColor("#B81d13")
             }
 
