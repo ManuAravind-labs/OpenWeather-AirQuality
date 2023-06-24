@@ -19,19 +19,6 @@ jobs:
           name: lint.html
           path: app/build/reports/lint-results-debug.html
 
-  ktlint:
-    needs: [ lint ]
-    name: Check Code Quality
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Clone PR
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-      - name: Run Ktlint
-        uses: lucasnlm/ktlint-action@master
-
   unit-test:
     needs: [ ktlint ]
     runs-on: ubuntu-latest
