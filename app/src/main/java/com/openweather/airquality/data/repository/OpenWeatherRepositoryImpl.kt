@@ -32,6 +32,8 @@ class OpenWeatherRepositoryImpl @Inject constructor(
                     val data = mapper.toDomainList(it)
                     val ourData = groupForecastByDate(data)
                     emit(NetworkState.Success(ourData))
+                }?: kotlin.run {
+                    emit(NetworkState.Error(response.message()))
                 }
             } else {
                 emit(NetworkState.Error(response.message()))

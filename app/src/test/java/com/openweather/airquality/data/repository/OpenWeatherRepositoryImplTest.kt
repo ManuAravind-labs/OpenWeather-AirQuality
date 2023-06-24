@@ -2,7 +2,6 @@ package com.openweather.airquality.data.repository
 
 import com.openweather.airquality.data.mapper.AirPollutionMapper
 import com.openweather.airquality.data.remote.ApiService
-import com.openweather.airquality.domain.common.NetworkState
 import com.openweather.airquality.domain.model.BaseEntity
 import com.openweather.airquality.domain.model.ForcastEntity
 import com.openweather.airquality.domain.model.HeaderEntity
@@ -118,7 +117,7 @@ class OpenWeatherRepositoryImplTest {
             // When
             val response = openWeatherRepository.forecastAirPollution()
             // Then
-            assertEquals(NetworkState.Success(expectedForecastList), response)
+            assertEquals(expectedForecastList, response.first().data)
         }
     }
 
